@@ -43,9 +43,12 @@ def callback():
         abort(400)
     return 'OK'
 
-    #======MongoDB操作範例======
-
-    elif '@讀取' in msg:
+#======MongoDB操作範例======
+# 處理訊息
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    msg = event.message.text
+    if '@讀取' in msg:
         datas = read_many_datas()
         datas_len = len(datas)
         message = TextSendMessage(text=f'資料數量，一共{datas_len}條')
