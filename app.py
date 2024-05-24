@@ -79,6 +79,10 @@ def handle_message(event):
         message = TextSendMessage(text=text)
         line_bot_api.reply_message(event.reply_token, message)
 
+    elif '我起床了' in msg:
+        message=TextSendMessage(text='你起床了!')
+        line_bot_api.reply_message(event.reply_token, message)
+
     #======MongoDB操作範例======
 
     else:
